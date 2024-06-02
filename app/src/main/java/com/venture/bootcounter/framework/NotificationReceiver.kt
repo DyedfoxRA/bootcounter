@@ -23,7 +23,7 @@ class NotificationReceiver : BroadcastReceiver(), KoinComponent {
                 0 -> "No boots detected"
                 1 -> "The boot was detected = ${bootEvents[0].timestamp.formatToString()}"
                 else -> {
-                    val delta = bootEvents[0].timestamp.time - bootEvents[1].timestamp.time
+                    val delta = bootEvents[0].timestamp - bootEvents[1].timestamp
                     "Last boots time delta = ${TimeUnit.MILLISECONDS.toMinutes(delta)} minutes"
                 }
             }

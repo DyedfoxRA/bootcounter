@@ -3,19 +3,19 @@ package com.venture.bootcounter.data.model
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import java.util.Date
 
 @Dao
 interface BootEventDao {
+
     @Insert
-    suspend fun insert(event: BootEvent)
+    fun insert(bootEvent: BootEvent)
 
-    @Query("SELECT * FROM boot_events ORDER BY timestamp DESC")
-    suspend fun getAllEvents(): List<BootEvent>
+    @Query("SELECT * FROM boot_event")
+    fun getAllEvents(): List<BootEvent>
 
-    @Query("SELECT COUNT(*) FROM boot_events WHERE DATE(timestamp / 1000, 'unixepoch') = DATE(:date / 1000, 'unixepoch')")
-    suspend fun getEventsCountByDate(date: Date): Int
+    @Query("SELECT COUNT(*) FROM boot_event WHERE date(timestamp) = date(:date)")
+    fun getEventsCountByDate(date: String): Int
 
-    @Query("SELECT * FROM boot_events ORDER BY timestamp DESC LIMIT 2")
-    suspend fun getLastTwoEvents(): List<BootEvent>
+    @Query("SELECT * FROM boot_event ORDER BY timestamp DESC LIMIT 2")
+    fun getLastTwoEvents(): List<BootEvent>
 }

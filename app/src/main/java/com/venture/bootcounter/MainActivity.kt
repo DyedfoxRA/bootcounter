@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
 }
 
 //todo move to utils
-fun Date.formatToString(pattern: String = "dd/MM/yyyy HH:mm:ss"): String {
+fun Long.formatToString(pattern: String = "yyyy-MM-dd HH:mm:ss"): String {
+    val date = Date(this)
     val formatter = SimpleDateFormat(pattern, Locale.getDefault())
-    return formatter.format(this)
+    return formatter.format(date)
 }

@@ -19,7 +19,7 @@ class BootReceiver : BroadcastReceiver(), KoinComponent {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
             Toast.makeText(context, "Boot Completed", Toast.LENGTH_SHORT).show()
-            val bootEvent = BootEvent(timestamp = Date())
+            val bootEvent = BootEvent(timestamp = Date().time)
 
             CoroutineScope(Dispatchers.IO).launch {
                 repository.insertEvent(bootEvent)

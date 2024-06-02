@@ -1,12 +1,11 @@
 package com.venture.bootcounter.feature
 
-import BootEvent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.venture.bootcounter.data.model.BootEvent
 import com.venture.bootcounter.data.repo.BootEventRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class BootViewModel(private val repository: BootEventRepository) : ViewModel() {
